@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "326853348631",
+    "firebase_url": "https://fastfoodshop-113de.firebaseio.com",
+    "project_id": "fastfoodshop-113de",
+    "storage_bucket": "fastfoodshop-113de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326853348631:android:f47c799569dfcf84",
+        "android_client_info": {
+          "package_name": "com.example.aminu.fastfoodshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326853348631-ht45n10pfs704s8dt9fv74sf0c2lp8g0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aminu.fastfoodshop",
+            "certificate_hash": "f686e051b132b10c1daa989c924f7794fe65dbdd"
+          }
+        },
+        {
+          "client_id": "326853348631-0176vn3s8lgqlf9rggj60r3qrcveqodq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoo24EZOOQhg5ipT5jVII_KQiKZosvpXU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326853348631-0176vn3s8lgqlf9rggj60r3qrcveqodq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

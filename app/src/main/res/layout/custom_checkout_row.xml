@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/checkoutText1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="A box has no Name"
+        android:textSize="20sp"/>
+    <ImageView
+        android:id="@+id/decrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_decrement"/>
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/increment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_increment"/>
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="100dp"
+        android:text="400"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/totalBundle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="1000"
+        android:textSize="25sp"/>
+    <ImageView
+        android:id="@+id/cancel_row"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:src="@drawable/ic_cancel" />
+
+
+
+
+
+</LinearLayout>
