@@ -6,24 +6,27 @@ package com.example.aminu.fastfoodshop.Models;
 
 public class FoodItems {
 
-    public String image;
+    public String itemImgUrl;
     public String name;
     public Long price;
+    public String itemId;
 
-    public FoodItems(String image, String name, Long price) {
-
+    public FoodItems(String itemImgUrl, String name, Long price,String itemId) {
+        this.itemImgUrl = itemImgUrl;
         this.name = name;
         this.price = price;
+        this.itemId = itemId;
     }
+
     public FoodItems() {
     }
 
-    public String getImage() {
-        return image;
+    public String getItemImgUrl() {
+        return itemImgUrl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setItemImgUrl(String itemImgUrl) {
+        this.itemImgUrl = itemImgUrl;
     }
 
     public String getName() {
@@ -42,12 +45,21 @@ public class FoodItems {
         this.price = price;
     }
 
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
     @Override
     public String toString() {
         return "FoodItems{" +
-                "image='" + image + '\'' +
+                "itemImgUrl='" + itemImgUrl + '\'' +
                 ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
+                ", price=" + price +
+                ", itemId='" + itemId + '\'' +
                 '}';
     }
 }

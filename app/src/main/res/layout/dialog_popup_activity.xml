@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@drawable/white_squared_button">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="161dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/DarkRed"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/closeDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight=".96"
+                android:background="@color/AntiqueWhite"
+                android:gravity="center"
+                android:text="Select Area To Navigate To Preferred Area "
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/closeItemDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.04"
+                android:background="@drawable/white_rounded_button"
+                android:backgroundTint="@color/White"
+                android:gravity="center"
+                android:text="Close"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_homeActivity"
+            android:layout_width="183dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/white_rounded_button"
+            android:text="Customer Area"
+            android:textColor="@color/ForestGreen"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_customizeActivity"
+            android:layout_width="183dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_rounded_button"
+            android:text="Customize Area"
+            android:textColor="@color/OrangeRed"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.aminu.fastfoodshop.Login.LoginActivity;
+import com.example.aminu.fastfoodshop.Methods.Constants;
 import com.example.aminu.fastfoodshop.Methods.TotalPrice;
 import com.example.aminu.fastfoodshop.Models.FoodItems;
 import com.example.aminu.fastfoodshop.Models.FoodOptions;
@@ -40,14 +41,15 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
     private Context mContext= HomeActivity.this;
-    private static Button button_clear;
-    private static Button button_deleteAll;
-    private static Button button_confirmPurchase;
+    private Button button_clear;
+    private Button button_deleteAll;
+    private Button button_confirmPurchase;
     public static TextView last_price;
 
     //Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase database;
 
     //Price List View
     public static List<String> item_listName = new ArrayList<String>();
@@ -55,47 +57,50 @@ public class HomeActivity extends AppCompatActivity {
     public static List<String> item_listPrice_copy = new ArrayList<String>();
     public static List<String> item_listid = new ArrayList<String>();
 
-    private List<String> item_name = new ArrayList<String>();
-    private List<String> item_price = new ArrayList<String>();
-    private List<String> item_price_copy = new ArrayList<String>();
-
-    //Item GridView
-    /*String[] itemName0={"Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemName1={"Spicy Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemName2={"Hot Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemName3={"Not a Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemName4={"What aBeef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemName5={"Got a Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
-    String[] itemPrice0={"300","330","600","60","280","260"};
-    String[] itemPrice1={"100","330","600","60","280","260"};
-    String[] itemPrice2={"200","330","600","60","280","260"};
-    String[] itemPrice3={"400","330","600","60","280","260"};
-    String[] itemPrice4={"500","330","600","60","280","260"};
-    String[] itemPrice5={"700","330","600","60","280","260"};
-
-    String[] itemPrice00={"300","330","600","60","280","260"};
-    String[] itemPrice11={"100","330","600","60","280","260"};
-    String[] itemPrice22={"200","330","600","60","280","260"};
-    String[] itemPrice33={"400","330","600","60","280","260"};
-    String[] itemPrice44={"500","330","600","60","280","260"};
-    String[] itemPrice55={"700","330","600","60","280","260"};*/
+    public static List<String> item_id = new ArrayList<String>();
+    public static List<String> item_name = new ArrayList<String>();
+    public static List<String> item_image_url = new ArrayList<String>();
+    public static List<String> item_price = new ArrayList<String>();
+    public static List<String> item_price_copy = new ArrayList<String>();
 
     int[] itemImage={R.drawable.burger,R.drawable.burger,R.drawable.burger};
-    //,R.drawable.burger,R.drawable.burger,R.drawable.burger
-
-    /*Object objectsName[]={itemName0,itemName1,itemName2,itemName3,itemName4,itemName5};
-    Object objectsPrice[]={itemPrice0,itemPrice1,itemPrice2,itemPrice3,itemPrice4,itemPrice5};
-    Object objectsPrice_copy[]={itemPrice00,itemPrice11,itemPrice22,itemPrice33,itemPrice44,itemPrice55};*/
-
 
     //Menu ListView
-
     public static List<String> mOptions = new ArrayList<String>();
-    public static List<String> mId = new ArrayList<String>();
+    public static List<String> mCategoryImgUrl = new ArrayList<String>();
+    public static List<String> mCategoryId = new ArrayList<String>();
 
-    //String [] options = {"Chefs Special","Drinks","Regulars","Shakes","Special","Specials"};
-    int[] images ={R.drawable.ic_chefs_special,R.drawable.ic_drinks,R.drawable.ic_regulars};
-    //,R.drawable.ic_shakes,R.drawable.ic_special_drinks,R.drawable.ic_specials
+    private void oldUsed(){
+
+        //Item GridView
+        /*String[] itemName0={"Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemName1={"Spicy Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemName2={"Hot Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemName3={"Not a Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemName4={"What aBeef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemName5={"Got a Beef Burger","Chicken Burger","Pizza","Sandwich","Sub-Sandwich","Tacos"};
+        String[] itemPrice0={"300","330","600","60","280","260"};
+        String[] itemPrice1={"100","330","600","60","280","260"};
+        String[] itemPrice2={"200","330","600","60","280","260"};
+        String[] itemPrice3={"400","330","600","60","280","260"};
+        String[] itemPrice4={"500","330","600","60","280","260"};
+        String[] itemPrice5={"700","330","600","60","280","260"};
+
+        String[] itemPrice00={"300","330","600","60","280","260"};
+        String[] itemPrice11={"100","330","600","60","280","260"};
+        String[] itemPrice22={"200","330","600","60","280","260"};
+        String[] itemPrice33={"400","330","600","60","280","260"};
+        String[] itemPrice44={"500","330","600","60","280","260"};
+        String[] itemPrice55={"700","330","600","60","280","260"};*/
+
+        /*Object objectsName[]={itemName0,itemName1,itemName2,itemName3,itemName4,itemName5};
+        Object objectsPrice[]={itemPrice0,itemPrice1,itemPrice2,itemPrice3,itemPrice4,itemPrice5};
+        Object objectsPrice_copy[]={itemPrice00,itemPrice11,itemPrice22,itemPrice33,itemPrice44,itemPrice55};*/
+
+        //String [] options = {"Chefs Special","Drinks","Regulars","Shakes","Special","Specials"};
+        //private int[] images ={R.drawable.ic_chefs_special,R.drawable.ic_drinks,R.drawable.ic_regulars};
+        //,R.drawable.ic_shakes,R.drawable.ic_special_drinks,R.drawable.ic_specials
+    }
 
     /**
      * CODE STARTS HERE
@@ -107,22 +112,18 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: App Starting.");
 
-
-
+        database = FirebaseDatabase.getInstance();
 
         iniWidgets();
         setupFirebaseAuth();
         iniDatabase();
-        //setupCustomGridAdapter();
-        //setupCustomListAdapter();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.fastfoodshop_menu, menu);
+        inflater.inflate(R.menu.fastfoodshop_homepage_menu, menu);
         return true;
     }
 
@@ -134,8 +135,14 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.sign_Out:
 
                 mAuth.signOut();
-                Intent intent2 = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(intent2);
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+
+                return true;
+            case R.id.custom_page:
+
+                Intent intent1 = new Intent(HomeActivity.this, CustomizeActivity.class);
+                startActivity(intent1);
 
                 return true;
             default:
@@ -143,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void iniWidgets(){
+    private void iniWidgets(){
         button_clear = (Button) findViewById(R.id.netClear);
         button_deleteAll = (Button)findViewById(R.id.deleteAll);
         button_confirmPurchase = (Button) findViewById(R.id.confirmPurchase);
@@ -151,54 +158,49 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * GRIDVIEW ADAPTER SETUP
-     * @param sentName
-     * @param sentPrice
-     * @param sentPrice_copy
      */
-    private void setupCustomGridAdapter(List sentName, List sentPrice, List sentPrice_copy){
+    private void setupCustomGridAdapter(){
 
-        final List<String> itemName = sentName;
-        final List<String> itemPrice = sentPrice;
-        final List<String> itemPrice_copy = sentPrice_copy;
+        try{
 
-        GridView gridView = (GridView) findViewById(R.id.gridList);
-        CustomGridAdapter adapter = new CustomGridAdapter(this, itemName,itemImage,itemPrice);
-        gridView.setAdapter(adapter);
+            GridView gridView = (GridView) findViewById(R.id.gridList);
+            CustomGridAdapter adapter = new CustomGridAdapter(this, item_name,item_image_url,item_price);
+            gridView.setAdapter(adapter);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //setupCustomListAdapter(itemName[i],itemPrice[i]);
-                //Toast.makeText(mContext, itemName[i], Toast.LENGTH_SHORT).show();
-                try {
-                    if (item_listid.contains(itemName.get(i))) {
-                        update_info(item_listid.indexOf(itemName.get(i)));
+                    try {
+                        if (item_listid.contains(item_name.get(i))) {
+                            update_info(item_listid.indexOf(item_name.get(i)));
 
-                        Log.d(TAG, "ID Index: " + item_listid.contains(itemName.get(i)) + "Item ID: " + item_listid.get(item_listid.indexOf(i)));
-                    } else {
+                        } else {
 
-                        item_listid.add(itemName.get(i));
-                        add(itemName.get(i), itemPrice.get(i), itemPrice_copy.get(i));
+                            item_listid.add(item_name.get(i));
+                            add(item_name.get(i), item_price.get(i), item_price_copy.get(i));
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
-                }catch (Exception e){
-                    Log.d(TAG, "onItemClick: grid item checking error: "+e.getMessage());
                 }
-            }
 
-        });
+            });
+
+            }catch (Exception e){
+                e.printStackTrace();
+        }
 
     }
 
     /**
-     * ADDING ITEMS TO STATIC LISTVIEW
+     * ADDING ITEMS TO LISTVIEW
      * @param sentName
      * @param sentPrice
      * @param sentPrice_copy
      */
     void add(String sentName, String sentPrice, String sentPrice_copy) {
-
 
         item_listName.add(sentName);
         item_listPrice.add(sentPrice);
@@ -220,50 +222,43 @@ public class HomeActivity extends AppCompatActivity {
     private  void setupCustomAdapter(){
 
         ListView listView = (ListView)findViewById(R.id.fragList);
-        CustomAdapter adapter= new CustomAdapter(this, mOptions,images);
+        CustomAdapter adapter= new CustomAdapter(this,mOptions,mCategoryImgUrl);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //setupCustomGridAdapter(objectsName[i],objectsPrice[i],objectsPrice_copy[i]);
-                //Log.d(TAG, "onItemClick: Changing menu item.");
+                final String test = mCategoryId.get(i);
 
-                final String test = mId.get(i);
-                Log.d(TAG, "onItemClick: "+test);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef_items = database.getReference().child("item_lists").child(test);
-                Log.d(TAG, "onItemClick: "+myRef_items);
+                DatabaseReference myRef_items = database.getReference().child(Constants.DATABASE_PATH_ITEM).child(test);
 
                 // Read from the database
                 myRef_items.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Log.d(TAG, "onDataChange: whats happening?"+dataSnapshot);
-
+                        item_id.clear();
                         item_name.clear();
+                        item_image_url.clear();
                         item_price.clear();
                         item_price_copy.clear();
 
                         FoodItems fItems = new FoodItems();
                         for(DataSnapshot ds: dataSnapshot.getChildren()){
 
-                            Log.d(TAG, "onDataChange: its inside?");
-
+                            fItems.setItemId(ds.getValue(FoodItems.class).getItemId());
                             fItems.setName(ds.getValue(FoodItems.class).getName());
+                            fItems.setItemImgUrl(ds.getValue(FoodItems.class).getItemImgUrl());
                             fItems.setPrice(ds.getValue(FoodItems.class).getPrice());
 
-
+                            item_id.add(fItems.getItemId());
                             item_name.add(fItems.getName());
+                            item_image_url.add(fItems.getItemImgUrl());
                             item_price.add(fItems.getPrice().toString());
                             item_price_copy.add(fItems.getPrice().toString());
-                            Log.d(TAG, "onDataChange: "+item_name);
-                            Log.d(TAG, "onDataChange: "+item_price);
-                            Log.d(TAG, "onDataChange: "+item_price_copy);
                         }
-                        setupCustomGridAdapter(item_name,item_price,item_price_copy);
+                        setupCustomGridAdapter();
                     }
 
                     @Override
@@ -385,8 +380,6 @@ public class HomeActivity extends AppCompatActivity {
 
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            Log.d(TAG, "setupCustomListAdapter: changing the quantity and price only.");
-            Log.d(TAG, "Quantity: "+intQuantity+" Price for quantity: "+intQuantity);
         }catch (Exception e){
             Log.d(TAG, "setupCustomListAdapter: index changer adapter error: "+e.getMessage());
         }
@@ -471,7 +464,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void iniDatabase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("catagory_options");
+        DatabaseReference myRef = database.getReference().child(Constants.DATABASE_PATH_CATEGORY);
 
 
         // Read from the database
@@ -480,15 +473,18 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 mOptions.clear();
+                mCategoryImgUrl.clear();
+                mCategoryId.clear();
                 FoodOptions fOptions = new FoodOptions();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
 
-                    //String name =ds.getValue(String.class);
+
                     fOptions.setName(ds.getValue(FoodOptions.class).getName());
-                    fOptions.setId(ds.getValue(FoodOptions.class).getId());
+                    fOptions.setFoodOptionsId(ds.getValue(FoodOptions.class).getFoodOptionsId());
+                    fOptions.setCategoryImgUrl(ds.getValue(FoodOptions.class).getCategoryImgUrl());
                     mOptions.add(fOptions.getName());
-                    mId.add(fOptions.getId());
-                    Log.d(TAG, "onDataChange: "+mOptions);
+                    mCategoryId.add(fOptions.getFoodOptionsId());
+                    mCategoryImgUrl.add(fOptions.getCategoryImgUrl());
                 }
                 setupCustomAdapter();
             }
@@ -524,7 +520,6 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupFirebaseAuth: Setting up Firebase Auth.");
         mAuth = FirebaseAuth.getInstance();
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aminu.fastfoodshop.HomeActivity.CustomizeActivity;
 import com.example.aminu.fastfoodshop.HomeActivity.HomeActivity;
 import com.example.aminu.fastfoodshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -99,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
+
                                     if (!task.isSuccessful()) {
                                         Log.w(TAG, "signInWithEmail:failed", task.getException());
                                         Toast.makeText(mContext, R.string.auth_failed,
@@ -117,9 +121,11 @@ public class LoginActivity extends AppCompatActivity {
                                          */
                                         if(mAuth.getCurrentUser()!=null){
                                             Log.d(TAG, "init: what up?");
-                                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                            startActivity(intent);
-                                            finish();
+                                            //Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                            //startActivity(intent);
+                                            //finish();
+
+                                            selectActivityDialog();
                                         }
                                     }
 
@@ -133,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        /*TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
+        TextView linkSignUp = (TextView) findViewById(R.id.link_signup);
         linkSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,8 +147,43 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
+
+    }
+
+    private void selectActivityDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_popup_activity,null);
+        dialogBuilder.setView(dialogView);
+
+        final Button btn_homeActivity = (Button) dialogView.findViewById(R.id.btn_homeActivity);
+        final Button btn_customizeActivity = (Button) dialogView.findViewById(R.id.btn_customizeActivity);
+
+        final AlertDialog popUp = dialogBuilder.create();
+        popUp.show();
+
+        btn_homeActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_customizeActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(LoginActivity.this, CustomizeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

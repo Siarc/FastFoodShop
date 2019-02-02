@@ -1,67 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/rbText1"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:padding="10dp"
-        android:text="VAT     : "
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:layout_alignParentTop="true" />
-    <TextView
-        android:id="@+id/rbText2"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/rbText1"
-        android:layout_marginTop="40dp"
-        android:padding="10dp"
-        android:textSize="25sp"
-        android:text="Vat"/>
     <TextView
         android:id="@+id/rbText3"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:padding="5dp"
         android:textStyle="bold"
         android:text="Total : "
-        android:textSize="30dp"
-        android:layout_below="@+id/rbText1" />
+        android:textSize="15sp"
+        android:layout_alignBaseline="@+id/rvText4"
+        android:layout_alignBottom="@+id/rvText4"
+        android:layout_alignParentStart="true" />
     <TextView
         android:id="@+id/rvText4"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rbText2"
-        android:layout_toRightOf="@+id/rbText3"
-        android:padding="10dp"
-
-        android:textSize="30sp"
-        android:text="Price"/>
+        android:layout_width="130dp"
+        android:layout_height="28dp"
+        android:padding="5dp"
+        android:textSize="15sp"
+        android:text="Price"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/rbText3" />
     <Button
         android:id="@+id/confirmPurchase"
-        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_rounded_button"
+        android:background="@drawable/white_squared_button"
         android:text="Confirm Purchase"
-        android:layout_marginTop="31dp"
-        android:layout_marginStart="38dp"
-        android:layout_below="@+id/rbText3"
-        android:layout_alignParentStart="true" />
+        android:textSize="10sp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/netClear"
+        android:layout_alignBottom="@+id/netClear" />
     <Button
         android:id="@+id/netClear"
-        android:padding="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/white_rounded_button"
+        android:layout_height="28dp"
+        android:background="@drawable/white_squared_button"
         android:text="Clear"
-        android:layout_below="@+id/confirmPurchase"
-        android:layout_alignEnd="@+id/confirmPurchase"
-        android:layout_marginEnd="33dp" />
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/rvText4" />
 
 
 

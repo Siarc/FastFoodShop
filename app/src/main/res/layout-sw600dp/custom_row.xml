@@ -16,20 +16,19 @@
             android:layout_width="30dp"
             android:layout_height="60dp"
             android:background="@drawable/white_squared_button"
-            android:padding="2dp"
+            android:padding="3dp"
             android:src="@drawable/ic_chefs_special"/>
 
         <TextView
             android:id="@+id/arcText1"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.12"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
             android:background="@drawable/white_rounded_button"
-            android:layout_gravity="center"
-            android:gravity="center"
+            android:gravity="fill_vertical|center_horizontal"
             android:text="Chefs Special"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="@color/Black"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_weight="0.12" />
     </LinearLayout>
 </RelativeLayout>

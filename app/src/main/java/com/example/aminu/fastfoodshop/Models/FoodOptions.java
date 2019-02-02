@@ -8,22 +8,25 @@ public class FoodOptions {
 
     private static final String TAG = "FoodOptions";
 
-    public static String id;
+    public String foodOptionsId;
     public String name;
+    public String categoryImgUrl;
 
-    public FoodOptions(String id, String name) {
-        this.id = id;
+    public FoodOptions(String name, String categoryImgUrl, String foodOptionsId) {
+        this.foodOptionsId = foodOptionsId;
         this.name = name;
+        this.categoryImgUrl = categoryImgUrl;
     }
+
     public FoodOptions() {
     }
 
-    public String getId() {
-        return id;
+    public String getFoodOptionsId() {
+        return foodOptionsId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFoodOptionsId(String foodOptionsId) {
+        this.foodOptionsId = foodOptionsId;
     }
 
     public String getName() {
@@ -34,12 +37,20 @@ public class FoodOptions {
         this.name = name;
     }
 
+    public String getCategoryImgUrl() {
+        return categoryImgUrl;
+    }
+
+    public void setCategoryImgUrl(String categoryImgUrl) {
+        this.categoryImgUrl = categoryImgUrl;
+    }
+
     @Override
     public String toString() {
         return "FoodOptions{" +
-                "id='" + id + '\'' +
+                "foodOptionsId='" + foodOptionsId + '\'' +
                 ", name='" + name + '\'' +
+                ", categoryImgUrl='" + categoryImgUrl + '\'' +
                 '}';
     }
-
 }

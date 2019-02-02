@@ -14,16 +14,19 @@ import com.example.aminu.fastfoodshop.R;
 
 import java.util.List;
 
-public class CustomGridAdapter extends BaseAdapter{
+/**
+ * Created by aminu on 10/8/2017.
+ */
 
-    private static final String TAG = "CustomGridAdapter";
+public class CustomItemViewAdapter extends BaseAdapter{
+    private static final String TAG = "CustomItemViewAdapter";
 
     private Context mContext;
     private final List<String> itemName;
     private final List<String> itemImage;
     private final List<String> itemPrice;
 
-    public CustomGridAdapter(Context context, List<String> itemName, List<String> itemImage, List<String> itemPrice) {
+    public CustomItemViewAdapter(Context context, List<String> itemName, List<String> itemImage, List<String> itemPrice) {
         mContext = context;
         this.itemImage = itemImage;
         this.itemName = itemName;

@@ -3,6 +3,16 @@
     package="com.example.aminu.fastfoodshop">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <supports-screens
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="true"/>
 
     <application
         android:allowBackup="true"
@@ -20,6 +30,7 @@
         </activity>
         <activity android:name=".Login.LoginActivity"/>
         <activity android:name=".Login.RegisterActivity"/>
+        <activity android:name=".HomeActivity.CustomizeActivity"/>
     </application>
 
 </manifest>

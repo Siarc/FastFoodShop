@@ -5,8 +5,8 @@
 
 
     <item
-        android:id="@+id/sign_Out"
-        android:title="Sign Out"
+        android:id="@+id/customize_page"
+        android:title="Customer Page"
         android:visible="true">
     </item>
 
